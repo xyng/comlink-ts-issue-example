@@ -13,8 +13,14 @@ const run = async () => {
   const test = await wrapped.exampleAdapter.get(42);
   console.log("chain (how it should be)", test);
 
+  // try to get them separately. typescript thinks this is fine (as the key promise is resolved)
   const exampleAdapter = await wrapped.exampleAdapter;
   console.log("adapterObject", exampleAdapter);
+
+  /*
+    but as functions cannot be cloned, exampleAdapter is actually an empty object
+    and the following line throws an error on runtime
+   */
   const test2 = await exampleAdapter.get(42);
 
   console.log("call on adapterObject", test2);
