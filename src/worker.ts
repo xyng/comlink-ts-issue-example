@@ -5,8 +5,6 @@ const Api = {
   exampleAdapter: new ExampleAdapter()
 };
 
-console.log("hello from worker");
-
 expose(Api);
 
 // typescript-specific stuff
